@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import schoolLogo from  './logo.png'; 
+import heroImage from './ipPhoto.jpg';
 
 const App = () => {
   const [activeSection, setActiveSection] = useState('accueil');
@@ -38,7 +40,9 @@ const App = () => {
       <header className="header">
         <div className="container">
           <div className="logo">
-            <div className="logo-icon">🎓</div>
+          <div className="logo-image">
+              <img src={schoolLogo} alt="Groupe Ipirnet Logo" />
+            </div>
             <div>
               <h1>Groupe Ipirnet</h1>
               <span>Excellence Éducative</span>
@@ -87,41 +91,43 @@ const App = () => {
       </header>
 
       {/* Hero Section */}
-      <section id="accueil" className="hero">
-        <div className="hero-overlay">
-          <div className="container">
-            <div className="hero-content">
-              <div className="hero-badge">Établissement d'Enseignement Supérieur</div>
-              <h1>Bienvenue au <span className="highlight">Groupe Ipirnet</span></h1>
-              <p>Votre partenaire pour une éducation de qualité et une formation professionnelle d'excellence au Maroc</p>
-              <div className="hero-buttons">
-                <button 
-                  className="btn-primary"
-                  onClick={() => scrollToSection('formations')}
-                >Découvrir nos formations</button>
-                <button 
-                  className="btn-secondary"
-                  onClick={() => scrollToSection('contact')}
-                >Nous contacter</button>
-              </div>
-              <div className="hero-stats">
-                <div className="stat">
-                  <h3>15+</h3>
-                  <p>Années d'expérience</p>
-                </div>
-                <div className="stat">
-                  <h3>500+</h3>
-                  <p>Étudiants formés</p>
-                </div>
-                <div className="stat">
-                  <h3>95%</h3>
-                  <p>Taux de réussite</p>
-                </div>
-              </div>
+<section id="accueil" className="hero">
+  <div className="hero-container">
+    <div className="hero-overlay">
+      <div className="container">
+        <div className="hero-content">
+          <div className="hero-badge">Établissement d'Enseignement Supérieur</div>
+          <h1>Bienvenue au Groupe Ipirnet</h1>
+          <p>Votre partenaire pour une éducation de qualité et une formation professionnelle d'excellence au Maroc</p>
+          <div className="hero-buttons">
+            <button 
+              className="btn-primary"
+              onClick={() => scrollToSection('formations')}
+            >Découvrir nos formations</button>
+            <button 
+              className="btn-secondary"
+              onClick={() => scrollToSection('contact')}
+            >Nous contacter</button>
+          </div>
+          <div className="hero-stats">
+            <div className="stat">
+              <h3>15+</h3>
+              <p>Années d'expérience</p>
+            </div>
+            <div className="stat">
+              <h3>500+</h3>
+              <p>Étudiants formés</p>
+            </div>
+            <div className="stat">
+              <h3>95%</h3>
+              <p>Taux de réussite</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* À Propos Section */}
       <section id="apropos" className="about">
@@ -258,6 +264,41 @@ const App = () => {
               </div>
               <button className="btn-outline">Voir le programme</button>
             </div>
+        <div className="formation-card"> 
+          <div className="card-header">
+            <div className="card-icon">🚛</div>
+          </div>
+          <h3>Licence Professionnelle</h3>
+          <ul className="formation-features">
+            <li>Gestion et optimisation de la chaîne logistique</li>
+            <li>Management opérationnel et pilotage des équipes</li>
+            <li>Systèmes d'information et outils informatiques appliqués</li>
+            <li>Techniques de planification et gestion des stocks</li>
+          </ul>
+          <div className="formation-duration">
+            <span>Durée : 3 ans</span>
+            <span>Diplôme : BAC</span>
+          </div>
+          <button className="btn-outline">Voir le programme</button>
+        </div>
+      <div className="formation-card">
+        <div className="card-header">
+          <div className="card-icon">🎓</div>
+         <div className="card-badge">Nouveau en 2025</div>
+        </div>
+        <h3>Master Professionnel</h3>
+        <ul className="formation-features">
+          <li>Gestion stratégique des ressources humaines</li>
+          <li>Leadership et conduite du changement</li>
+          <li>Transformation digitale et systèmes d'information</li>
+          <li>Logistique avancée et prise de décision analytique</li>
+        </ul>
+        <div className="formation-duration">
+          <span>Durée : 2 ans</span>
+          <span>Diplôme : BAC+3</span>
+        </div>
+        <button className="btn-outline">Voir le programme</button>
+      </div>
           </div>
         </div>
       </section>
@@ -304,17 +345,17 @@ const App = () => {
               <div className="info-card">
                 <h3>Prochaines Rentrées</h3>
                 <ul>
-                  <li>• Septembre 2024</li>
-                  <li>• Janvier 2025</li>
+                  <li>Septembre 2024</li>
+                  <li>Janvier 2025</li>
                 </ul>
               </div>
               <div className="info-card">
                 <h3>Documents requis</h3>
                 <ul>
-                  <li>• Copies des diplômes</li>
-                  <li>• Relevés de notes</li>
-                  <li>• CV et lettre de motivation</li>
-                  <li>• Photos d'identité</li>
+                  <li>Copies des diplômes</li>
+                  <li>Relevés de notes</li>
+                  <li>CV et lettre de motivation</li>
+                  <li>Photos d'identité</li>
                 </ul>
               </div>
             </div>
@@ -341,7 +382,7 @@ const App = () => {
                 <div className="contact-icon">📍</div>
                 <div>
                   <h4>Adresse</h4>
-                  <p>123 Avenue de l'Éducation, Casablanca, Maroc</p>
+                  <p>boulevard hassan 2\ lot Essafi \Imm 1, Berrechid, Morocco</p>
                 </div>
               </div>
               
@@ -349,7 +390,7 @@ const App = () => {
                 <div className="contact-icon">📞</div>
                 <div>
                   <h4>Téléphone</h4>
-                  <p>+212 5 22 00 00 00</p>
+                  <p>+212 5 22 32 72 13</p>
                 </div>
               </div>
               
@@ -357,7 +398,7 @@ const App = () => {
                 <div className="contact-icon">✉️</div>
                 <div>
                   <h4>Email</h4>
-                  <p>contact@groupeipirnet.ma</p>
+                  <p>ipirnet.fp@gmail.com</p>
                 </div>
               </div>
               
@@ -472,9 +513,9 @@ const App = () => {
             <div className="footer-section">
               <h4>Contact</h4>
               <div className="footer-contact">
-                <p>📍 123 Avenue de l'Éducation, Casablanca</p>
-                <p>📞 +212 5 22 00 00 00</p>
-                <p>✉️ contact@groupeipirnet.ma</p>
+                <p>📍 boulevard hassan 2\ lot Essafi \Imm 1, Berrechid, Morocco</p>
+                <p>📞 +212 5 22 32 72 13</p>
+                <p>✉️ ipirnet.fp@gmail.com</p>
               </div>
               <div className="footer-social">
                 <a href="https://web.facebook.com/people/Groupe-ipirnet/100066644283899/" target="_blank" rel="noopener noreferrer">Facebook</a>
