@@ -149,10 +149,10 @@ const App = () => {
               <div className="about-feature">
                 <h3>Nos Valeurs</h3>
                 <ul className="values-list">
-                  <li>✓ Excellence académique</li>
-                  <li>✓ Innovation pédagogique</li>
-                  <li>✓ Professionnalisme</li>
-                  <li>✓ Ouverture internationale</li>
+                  <li>Excellence académique</li>
+                  <li>Innovation pédagogique</li>
+                  <li>Professionnalisme</li>
+                  <li>Ouverture internationale</li>
                 </ul>
               </div>
             </div>
