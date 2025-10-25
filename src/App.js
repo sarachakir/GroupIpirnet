@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import schoolLogo from './logo.png';
+import { createClient } from '@supabase/supabase-js'
+
+// Configuration Supabase
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
+const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Icônes modernes (vous pouvez les remplacer par des icônes SVG réelles)
 const PremiumApp = () => {
@@ -60,7 +66,71 @@ const PremiumApp = () => {
     setIsMenuOpen(false);
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
+  // Gestion du formulaire de contact
+const handleContactSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
+  console.log('Données du formulaire:', contactForm);
+  console.log('URL Supabase:', supabaseUrl);
+  console.log('Clé Supabase:', supabaseAnonKey ? 'Définie' : 'Non définie');
+
+  try {
+    const { data, error } = await supabase
+      .from('contacts')
+      .insert([
+        {
+          name: contactForm.name,
+          email: contactForm.email,
+          phone: contactForm.phone,
+          formation_interested: contactForm.formation,
+          message: contactForm.message
+        }
+      ])
+      .select();
+
+    console.log('Réponse Supabase:', { data, error });
+
+    if (error) {
+      console.error('Erreur Supabase détaillée:', error);
+      throw error;
+    }
+
+    // Success
+    alert('Message envoyé avec succès ! Nous vous recontacterons rapidement.');
+    
+    // Reset du formulaire
+    setContactForm({
+      name: '',
+      email: '',
+      phone: '',
+      formation: '',
+      message: ''
+    });
+
+  } catch (error) {
+    console.error('Erreur complète:', error);
+    alert('Erreur lors de l\'envoi du message. Veuillez réessayer.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+const handleInputChange = (e) => {
+  const { id, value } = e.target;
+  setContactForm(prev => ({
+    ...prev,
+    [id]: value
+  }));
+};
+const [contactForm, setContactForm] = useState({
+  name: '',
+  email: '',
+  phone: '',
+  formation: '',
+  message: ''
+});
+const [isSubmitting, setIsSubmitting] = useState(false);
   // Données pour les formations
   const formations = [
     {
@@ -508,23 +578,44 @@ const PremiumApp = () => {
               </div>
             </div>
             <div className="contact-form animate-on-scroll">
-              <form className="modern-form">
+              <form className="modern-form" onSubmit={handleContactSubmit}>
                 <div className="form-row">
                   <div className="form-group">
-                    <input type="text" id="name" required />
+                    <input 
+                      type="text" 
+                      id="name" 
+                      value={contactForm.name}
+                      onChange={handleInputChange}
+                      required 
+                    />
                     <label htmlFor="name">Nom complet *</label>
                   </div>
                   <div className="form-group">
-                    <input type="email" id="email" required />
+                    <input 
+                      type="email" 
+                      id="email" 
+                      value={contactForm.email}
+                      onChange={handleInputChange}
+                      required 
+                    />
                     <label htmlFor="email">Email *</label>
                   </div>
                 </div>
                 <div className="form-group">
-                  <input type="tel" id="phone" />
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    value={contactForm.phone}
+                    onChange={handleInputChange}
+                  />
                   <label htmlFor="phone">Téléphone</label>
                 </div>
                 <div className="form-group">
-                  <select id="formation">
+                  <select 
+                    id="formation"
+                    value={contactForm.formation}
+                    onChange={handleInputChange}
+                  >
                     <option value=""></option>
                     <option value="informatique">Informatique & Réseaux</option>
                     <option value="gestion">Gestion & Management</option>
@@ -533,11 +624,21 @@ const PremiumApp = () => {
                   <label htmlFor="formation">Formation intéressée</label>
                 </div>
                 <div className="form-group">
-                  <textarea id="message" rows="5" required></textarea>
+                  <textarea 
+                    id="message" 
+                    rows="5" 
+                    value={contactForm.message}
+                    onChange={handleInputChange}
+                    required
+                  ></textarea>
                   <label htmlFor="message">Message *</label>
                 </div>
-                <button type="submit" className="btn-submit">
-                  Envoyer le message
+                <button 
+                  type="submit" 
+                  className="btn-submit"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
                 </button>
               </form>
             </div>
@@ -578,7 +679,7 @@ const PremiumApp = () => {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2024 Groupe Ipirnet. Tous droits réservés.</p>
+            <p>&copy; 2025 Groupe Ipirnet. Tous droits réservés.</p>
           </div>
         </div>
       </footer>
