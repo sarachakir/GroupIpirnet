@@ -1827,8 +1827,8 @@ body {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -1837,39 +1837,48 @@ body {
 .feature-card {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  padding: 40px 30px;
+  padding: 30px 25px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #86658f;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .feature-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .feature-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
 }
 
 .feature-title {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 10px;
+  line-height: 1.3;
 }
 
 .feature-subtitle {
-  font-size: 1.1rem;
+  font-size: 1rem;
   opacity: 0.9;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   font-weight: 500;
+  line-height: 1.4;
 }
 
 .feature-description {
   opacity: 0.8;
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: 0.9rem;
 }
 
 .feature-hover-effect {
@@ -1878,9 +1887,125 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  transition: left 0.5s ease;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.6s ease;
 }
 
 .feature-card:hover .feature-hover-effect {
   left: 100%;
+}
+
+/* 📱 Téléphone (mobile first) */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 15px;
+  }
+  
+  .feature-card {
+    padding: 25px 20px;
+    min-height: 200px;
+  }
+  
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  
+  .feature-title {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  
+  .feature-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+  
+  .feature-description {
+    font-size: 0.85rem;
+  }
+}
+
+/* 📟 Tablette */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 20px;
+  }
+  
+  .feature-card {
+    padding: 25px 20px;
+    min-height: 220px;
+  }
+  
+  .feature-icon {
+    font-size: 2.2rem;
+  }
+  
+  .feature-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* 💻 Desktop */
+@media (min-width: 1025px) {
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  
+  .feature-card {
+    padding: 35px 30px;
+    min-height: 280px;
+  }
+  
+  .feature-icon {
+    font-size: 2.8rem;
+  }
+  
+  .feature-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* 🖥️ Grand écran */
+@media (min-width: 1440px) {
+  .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1400px;
+  }
+}
+
+/* 📱 Très petits téléphones */
+@media (max-width: 480px) {
+  .features-grid {
+    padding: 0 10px;
+    gap: 15px;
+  }
+  
+  .feature-card {
+    padding: 20px 15px;
+    min-height: 180px;
+    border-radius: 15px;
+  }
+  
+  .feature-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .feature-title {
+    font-size: 1.2rem;
+  }
+  
+  .feature-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .feature-description {
+    font-size: 0.8rem;
+  }
 }

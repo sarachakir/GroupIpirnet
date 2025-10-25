@@ -439,25 +439,21 @@ const [isSubmitting, setIsSubmitting] = useState(false);
     <div className="features-grid">
       {[
         {
-          icon: "🚀",
           title: "Innovation",
           subtitle: "Pédagogie tournée vers l'avenir",
           description: "Des méthodes d'apprentissage innovantes pour préparer aux métiers de demain"
         },
         {
-          icon: "🏆",
           title: "Groupe Ipimet",
           subtitle: "Au cœur de l'excellence",
           description: "Un groupe éducatif reconnu pour la qualité de sa formation"
         },
         {
-          icon: "🤝",
           title: "Partenariats",
           subtitle: "Réseau étendu d'entreprises partenaires",
           description: "Des collaborations solides avec les acteurs majeurs du secteur"
         },
         {
-          icon: "👨‍🏫",
           title: "Enseignants",
           subtitle: "Experts passionnés dédiés à votre réussite",
           description: "Une équipe pédagogique expérimentée et engagée"
